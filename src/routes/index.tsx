@@ -398,52 +398,70 @@ function Services() {
   return (
     <section id="services" className="bg-soft py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="Professional & Business Services"
-          title="Practical services you can order today"
-          text="Delivered directly for individuals, entrepreneurs and SMEs."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Professional & Business Services"
+            title="Practical services you can order today"
+            text="Delivered directly for individuals, entrepreneurs and SMEs."
+          />
+        </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {serviceGroups.map((g) => (
-            <div key={g.title} className="rounded-2xl border border-border bg-card p-6 shadow-card">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand">
-                <g.icon className="h-5 w-5 text-primary-foreground" />
+          {serviceGroups.map((g, idx) => (
+            <Reveal key={g.title} delay={idx * 90} className="h-full">
+              <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-glow">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <g.icon className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold text-ink">{g.title}</h3>
+                <ul className="mt-4 space-y-2">
+                  {g.items.map((i) => (
+                    <li key={i} className="flex gap-2 text-sm text-muted-foreground">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      {i}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="mt-5 text-lg font-semibold text-ink">{g.title}</h3>
-              <ul className="mt-4 space-y-2">
-                {g.items.map((i) => (
-                  <li key={i} className="flex gap-2 text-sm text-muted-foreground">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </Reveal>
           ))}
-          <div className="flex flex-col justify-between rounded-2xl bg-brand p-6 shadow-glow">
-            <div>
-              <h3 className="text-lg font-semibold text-primary-foreground">
-                Not sure what you need?
-              </h3>
-              <p className="mt-3 text-sm text-primary-foreground/85">
-                Send a message on WhatsApp and we will advise the right service for your situation.
-              </p>
-            </div>
-            <Button asChild variant="secondary" className="mt-6 rounded-full">
-              <a
-                href={waLink("Hello TERMINO-X, I need advice on which service fits my business.")}
-                target="_blank"
-                rel="noreferrer"
+          <Reveal delay={serviceGroups.length * 90} className="h-full">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-glow">
+              <img
+                src={servicesImage}
+                alt="Business plans, proposals and pitch decks prepared by TERMINO-X"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-brand opacity-85" />
+              <div className="relative">
+                <h3 className="text-lg font-semibold text-primary-foreground">
+                  Not sure what you need?
+                </h3>
+                <p className="mt-3 text-sm text-primary-foreground/85">
+                  Send a message on WhatsApp and we will advise the right service for your situation.
+                </p>
+              </div>
+              <Button
+                asChild
+                variant="secondary"
+                className="relative mt-6 rounded-full transition-transform hover:scale-105"
               >
-                <MessageCircle className="mr-2 h-4 w-4" /> Chat on WhatsApp
-              </a>
-            </Button>
-          </div>
+                <a
+                  href={waLink("Hello TERMINO-X, I need advice on which service fits my business.")}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" /> Chat on WhatsApp
+                </a>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Packages() {
   return (
