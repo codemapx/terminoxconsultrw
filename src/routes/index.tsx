@@ -20,6 +20,12 @@ import {
   MessageCircle,
 } from "lucide-react";
 import logo from "@/assets/termino-x-logo.png.asset.json";
+import heroImage from "@/assets/hero-consulting.jpg";
+import servicesImage from "@/assets/services-docs.jpg";
+import programsImage from "@/assets/programs-training.jpg";
+import agentsImage from "@/assets/agents-network.jpg";
+import packagesImage from "@/assets/packages-team.jpg";
+import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
