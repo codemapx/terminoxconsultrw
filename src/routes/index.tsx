@@ -723,51 +723,68 @@ function Programs() {
 
 function AgentNetwork() {
   return (
-    <section id="agents" className="py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="agents" className="relative overflow-hidden py-20">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto max-w-6xl px-5">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Digital Agent Network
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Earn by connecting businesses to TERMINO-X
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Become a TERMINO-X Digital Agent. Identify businesses that need a website, business
-              plan, digital marketing, AI training, sales training or a company profile, refer them
-              to TERMINO-X, and earn through an agreed commission structure.
-            </p>
-            <div className="mt-8 flex items-center gap-3">
-              <Network className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium text-ink">
-                TERMINO-X trains · Agents find opportunities · TERMINO-X delivers · Agents earn
-              </span>
-            </div>
-            <Button asChild size="lg" className="mt-8 rounded-full">
-              <a
-                href={waLink("Hello TERMINO-X, I want to become a TERMINO-X Digital Agent.")}
-                target="_blank"
-                rel="noreferrer"
+          <Reveal>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                Digital Agent Network
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
+                Earn by connecting businesses to TERMINO-X
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Become a TERMINO-X Digital Agent. Identify businesses that need a website, business
+                plan, digital marketing, AI training, sales training or a company profile, refer
+                them to TERMINO-X, and earn through an agreed commission structure.
+              </p>
+              <div className="group mt-8 overflow-hidden rounded-3xl shadow-card">
+                <img
+                  src={agentsImage}
+                  alt="TERMINO-X digital agents connecting businesses across Rwanda"
+                  loading="lazy"
+                  className="h-48 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 sm:h-60"
+                />
+              </div>
+              <div className="mt-8 flex items-center gap-3">
+                <Network className="h-5 w-5 animate-float-slow text-primary" />
+                <span className="text-sm font-medium text-ink">
+                  TERMINO-X trains · Agents find opportunities · TERMINO-X delivers · Agents earn
+                </span>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="mt-8 rounded-full transition-transform hover:scale-105"
               >
-                Become an agent
-              </a>
-            </Button>
-          </div>
+                <a
+                  href={waLink("Hello TERMINO-X, I want to become a TERMINO-X Digital Agent.")}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Become an agent
+                </a>
+              </Button>
+            </div>
+          </Reveal>
           <ol className="space-y-4">
             {pathway.map((p, i) => (
-              <li
-                key={p.step}
-                className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-primary-foreground">
-                  {i + 1}
-                </span>
-                <div>
-                  <p className="font-semibold text-ink">{p.step}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.detail}</p>
-                </div>
-              </li>
+              <Reveal key={p.step} delay={i * 120}>
+                <li className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-primary-foreground">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-ink">{p.step}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.detail}</p>
+                  </div>
+                </li>
+              </Reveal>
             ))}
           </ol>
         </div>
@@ -775,6 +792,7 @@ function AgentNetwork() {
     </section>
   );
 }
+
 
 const interests = [
   "Business plan",
