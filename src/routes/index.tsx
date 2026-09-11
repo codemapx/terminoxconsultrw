@@ -974,9 +974,17 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="bg-brand py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 text-center">
-        <img src={logo.url} alt="TERMINO-X LTD" className="h-10 w-auto" />
+    <footer className="relative overflow-hidden bg-brand py-12">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-16 -top-10 h-56 w-56 rounded-full bg-white/10 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 text-center">
+        <img
+          src={logo.url}
+          alt="TERMINO-X LTD"
+          className="h-10 w-auto animate-float-slow"
+        />
         <p className="max-w-xl text-sm text-primary-foreground/80">
           Business Solutions · Sales & Marketing · Skills Development · Skills-to-Income · Digital &
           AI · Sector Training
@@ -996,6 +1004,7 @@ function Index() {
       <main>
         <Hero />
         <Services />
+        <Showcase />
         <Packages />
         <Programs />
         <AgentNetwork />
