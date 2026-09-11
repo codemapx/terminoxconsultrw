@@ -609,7 +609,7 @@ function Programs() {
           {programs.map((p, idx) => (
             <Reveal key={p.name} delay={idx * 110} className="h-full">
             <div
-              className={`flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-2 ${
+              className={`group flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-2 ${
                 p.featured
                   ? "border-transparent bg-brand shadow-glow"
                   : "border-border bg-card shadow-card hover:shadow-glow"
