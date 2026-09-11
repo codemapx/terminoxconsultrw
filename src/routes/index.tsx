@@ -772,10 +772,10 @@ function AgentNetwork() {
               </Button>
             </div>
           </Reveal>
-          <ol className="space-y-4">
+          <ol className="space-y-4 list-none">
             {pathway.map((p, i) => (
-              <Reveal key={p.step} delay={i * 120}>
-                <li className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
+              <li key={p.step}>
+                <Reveal delay={i * 120} className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-primary-foreground">
                     {i + 1}
                   </span>
@@ -783,8 +783,8 @@ function AgentNetwork() {
                     <p className="font-semibold text-ink">{p.step}</p>
                     <p className="mt-1 text-sm text-muted-foreground">{p.detail}</p>
                   </div>
-                </li>
-              </Reveal>
+                </Reveal>
+              </li>
             ))}
           </ol>
         </div>
