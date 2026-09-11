@@ -616,16 +616,11 @@ function Programs() {
               }`}
             >
               <div
-                className={`flex h-11 w-11 items-center justify-center rounded-xl ${
-                  p.featured ? "bg-white/15 animate-float-slow" : "bg-secondary"
+                className={`flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${
+                  p.featured ? "animate-float-slow bg-white/15" : "bg-secondary"
                 }`}
               >
 
-              <div
-                className={`flex h-11 w-11 items-center justify-center rounded-xl ${
-                  p.featured ? "bg-white/15" : "bg-secondary"
-                }`}
-              >
                 <p.icon
                   className={`h-5 w-5 ${p.featured ? "text-primary-foreground" : "text-primary"}`}
                 />
