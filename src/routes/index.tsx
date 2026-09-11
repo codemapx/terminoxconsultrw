@@ -398,8 +398,9 @@ function SectionHead({
 
 function Services() {
   return (
-    <section id="services" className="bg-soft py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="services" className="relative overflow-hidden bg-soft py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
+      <div className="relative mx-auto max-w-6xl px-5">
         <Reveal>
           <SectionHead
             eyebrow="Professional & Business Services"
@@ -484,6 +485,7 @@ function Showcase() {
         className="absolute inset-0 h-full w-full object-cover opacity-30"
       />
       <div className="absolute inset-0 bg-brand opacity-75" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-rays opacity-50 animate-spin-slow" />
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/3 top-0 h-64 w-64 rounded-full bg-accent/25 blur-3xl animate-drift"
@@ -498,7 +500,9 @@ function Showcase() {
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 110}>
               <div className="rounded-2xl border border-white/15 bg-white/10 p-6 text-center backdrop-blur transition-transform duration-300 hover:-translate-y-1.5">
-                <p className="text-3xl font-extrabold text-primary-foreground">{s.value}</p>
+                <p className="text-3xl font-extrabold text-primary-foreground">
+                  <CountUp value={s.value} />
+                </p>
                 <p className="mt-2 text-sm text-primary-foreground/80">{s.label}</p>
               </div>
             </Reveal>
@@ -511,8 +515,9 @@ function Showcase() {
 
 function Packages() {
   return (
-    <section id="packages" className="py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="packages" className="relative overflow-hidden py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots opacity-70 [mask-image:radial-gradient(60%_50%_at_50%_20%,black,transparent)]" />
+      <div className="relative mx-auto max-w-6xl px-5">
         <Reveal>
           <SectionHead
             eyebrow="Simple Offers"
@@ -573,8 +578,9 @@ function Packages() {
 
 function Programs() {
   return (
-    <section id="programs" className="bg-soft py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="programs" className="relative overflow-hidden bg-soft py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-grid opacity-50 [mask-image:radial-gradient(65%_55%_at_50%_100%,black,transparent)]" />
+      <div className="relative mx-auto max-w-6xl px-5">
         <Reveal>
           <SectionHead
             eyebrow="TERMINO-X Programs"
@@ -841,8 +847,9 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-soft py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="contact" className="relative overflow-hidden bg-soft py-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots opacity-60 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" />
+      <div className="relative mx-auto max-w-6xl px-5">
         <Reveal>
           <SectionHead
             eyebrow="Contact"
@@ -997,12 +1004,35 @@ function Footer() {
   );
 }
 
+const marqueeItems = [
+  "Business plans",
+  "Company profiles",
+  "Pitch decks",
+  "Market research",
+  "Sales strategy",
+  "Digital marketing",
+  "AI training",
+  "Skills to income",
+  "Sector accelerators",
+];
+
+function TickerBand() {
+  return (
+    <div className="relative border-y border-border bg-background py-5">
+      <div aria-hidden className="absolute inset-x-0 top-0 h-px divider-glow" />
+      <Marquee items={marqueeItems} />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-px divider-glow" />
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Nav />
       <main>
         <Hero />
+        <TickerBand />
         <Services />
         <Showcase />
         <Packages />
@@ -1018,6 +1048,10 @@ function Index() {
         aria-label="Chat on WhatsApp"
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand shadow-glow transition-transform hover:scale-105"
       >
+        <span
+          aria-hidden
+          className="absolute inset-0 rounded-full bg-accent/50 animate-pulse-ring"
+        />
         <MessageCircle className="h-6 w-6 text-primary-foreground" />
       </a>
     </div>
