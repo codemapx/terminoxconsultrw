@@ -682,13 +682,18 @@ function Programs() {
                 </a>
               </Button>
             </div>
+            </Reveal>
           ))}
         </div>
 
-        <h3 className="mt-16 text-center text-2xl font-bold text-ink">Sector Accelerators</h3>
+        <Reveal>
+          <h3 className="mt-16 text-center text-2xl font-bold text-ink">Sector Accelerators</h3>
+        </Reveal>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {sectorPrograms.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+          {sectorPrograms.map((s, idx) => (
+            <Reveal key={s.name} delay={idx * 110} className="h-full">
+            <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-glow">
+
               <div className="flex items-center gap-3">
                 <s.icon className="h-5 w-5 text-primary" />
                 <span className="text-sm font-bold text-primary">{s.price}</span>
