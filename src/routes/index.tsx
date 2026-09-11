@@ -717,7 +717,9 @@ function Programs() {
                 </a>
               </Button>
             </div>
+            </Reveal>
           ))}
+
         </div>
       </div>
     </section>
