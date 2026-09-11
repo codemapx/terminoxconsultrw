@@ -25,6 +25,8 @@ import servicesImage from "@/assets/services-docs.jpg";
 import programsImage from "@/assets/programs-training.jpg";
 import agentsImage from "@/assets/agents-network.jpg";
 import packagesImage from "@/assets/packages-team.jpg";
+import pitchImage from "@/assets/pitch-presentation.jpg";
+import classroomImage from "@/assets/skills-classroom.jpg";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
