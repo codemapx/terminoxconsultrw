@@ -463,41 +463,111 @@ function Services() {
 }
 
 
-function Packages() {
+const stats = [
+  { value: "5", label: "Service areas" },
+  { value: "6", label: "Accelerator programs" },
+  { value: "100%", label: "Practical, hands-on delivery" },
+  { value: "Kigali", label: "Based in Rwanda" },
+];
+
+function Showcase() {
   return (
-    <section id="packages" className="py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="Simple Offers"
-          title="Five packages, one clear choice"
-          text="Pick the package that matches where you are right now."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {packages.map((p) => (
-            <div
-              key={p.title}
-              className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card transition-transform hover:-translate-y-1"
-            >
-              <span className="text-2xl">{p.tag}</span>
-              <h3 className="mt-3 text-lg font-semibold text-ink">{p.title}</h3>
-              <p className="mt-1 text-sm font-medium text-primary">{p.who}</p>
-              <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.includes}</p>
-              <Button asChild variant="outline" className="mt-6 rounded-full">
-                <a
-                  href={waLink(`Hello TERMINO-X, I am interested in the "${p.title}" package.`)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Request this package
-                </a>
-              </Button>
-            </div>
+    <section className="relative overflow-hidden bg-brand py-16">
+      <img
+        src={pitchImage}
+        alt="TERMINO-X client presenting a pitch deck to investors"
+        loading="lazy"
+        width={1600}
+        height={1008}
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-brand opacity-75" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/3 top-0 h-64 w-64 rounded-full bg-accent/25 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto max-w-6xl px-5">
+        <Reveal>
+          <p className="mx-auto max-w-3xl text-center text-xl font-semibold leading-relaxed text-primary-foreground sm:text-2xl">
+            We prepare you for the rooms that matter — investors, banks, partners and customers.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 110}>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-6 text-center backdrop-blur transition-transform duration-300 hover:-translate-y-1.5">
+                <p className="text-3xl font-extrabold text-primary-foreground">{s.value}</p>
+                <p className="mt-2 text-sm text-primary-foreground/80">{s.label}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
+function Packages() {
+  return (
+    <section id="packages" className="py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <Reveal>
+          <SectionHead
+            eyebrow="Simple Offers"
+            title="Five packages, one clear choice"
+            text="Pick the package that matches where you are right now."
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="group relative mt-12 overflow-hidden rounded-3xl shadow-card">
+            <img
+              src={packagesImage}
+              alt="Entrepreneurs planning their business growth together in Kigali"
+              loading="lazy"
+              width={1600}
+              height={912}
+              className="h-56 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 sm:h-72"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+            <div className="absolute bottom-0 p-6 sm:p-8">
+              <p className="text-lg font-semibold text-primary-foreground sm:text-2xl">
+                Wherever you are starting from, there is a package for you.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {packages.map((p, i) => (
+            <Reveal key={p.title} delay={i * 90} className="h-full">
+              <div className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-glow">
+                <span className="text-2xl transition-transform duration-300 group-hover:scale-125">
+                  {p.tag}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-ink">{p.title}</h3>
+                <p className="mt-1 text-sm font-medium text-primary">{p.who}</p>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.includes}</p>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="mt-6 rounded-full transition-transform hover:scale-105"
+                >
+                  <a
+                    href={waLink(`Hello TERMINO-X, I am interested in the "${p.title}" package.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Request this package
+                  </a>
+                </Button>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 function Programs() {
   return (
