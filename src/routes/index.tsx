@@ -575,21 +575,52 @@ function Programs() {
   return (
     <section id="programs" className="bg-soft py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="TERMINO-X Programs"
-          title="Accelerators that lead to income"
-          text="Learn a skill, package it, sell it and grow it."
-        />
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {programs.map((p) => (
+        <Reveal>
+          <SectionHead
+            eyebrow="TERMINO-X Programs"
+            title="Accelerators that lead to income"
+            text="Learn a skill, package it, sell it and grow it."
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="group relative mt-12 overflow-hidden rounded-3xl shadow-card">
+            <img
+              src={classroomImage}
+              alt="Trainees learning digital and business skills in a TERMINO-X classroom"
+              loading="lazy"
+              width={1600}
+              height={912}
+              className="h-52 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 sm:h-72"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+            <div className="absolute inset-y-0 left-0 flex max-w-md items-center p-6 sm:p-10">
+              <div>
+                <p className="text-xl font-bold text-primary-foreground sm:text-3xl">
+                  Learn. Package. Sell. Earn.
+                </p>
+                <p className="mt-2 text-sm text-primary-foreground/85">
+                  Practical training with real income pathways.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {programs.map((p, idx) => (
+            <Reveal key={p.name} delay={idx * 110} className="h-full">
             <div
-              key={p.name}
-              className={`flex flex-col rounded-2xl border p-7 ${
+              className={`flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-2 ${
                 p.featured
                   ? "border-transparent bg-brand shadow-glow"
-                  : "border-border bg-card shadow-card"
+                  : "border-border bg-card shadow-card hover:shadow-glow"
               }`}
             >
+              <div
+                className={`flex h-11 w-11 items-center justify-center rounded-xl ${
+                  p.featured ? "bg-white/15 animate-float-slow" : "bg-secondary"
+                }`}
+              >
+
               <div
                 className={`flex h-11 w-11 items-center justify-center rounded-xl ${
                   p.featured ? "bg-white/15" : "bg-secondary"
