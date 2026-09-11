@@ -25,6 +25,8 @@ import servicesImage from "@/assets/services-docs.jpg";
 import programsImage from "@/assets/programs-training.jpg";
 import agentsImage from "@/assets/agents-network.jpg";
 import packagesImage from "@/assets/packages-team.jpg";
+import pitchImage from "@/assets/pitch-presentation.jpg";
+import classroomImage from "@/assets/skills-classroom.jpg";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -463,35 +465,43 @@ function Services() {
 }
 
 
-function Packages() {
+const stats = [
+  { value: "5", label: "Service areas" },
+  { value: "6", label: "Accelerator programs" },
+  { value: "100%", label: "Practical, hands-on delivery" },
+  { value: "Kigali", label: "Based in Rwanda" },
+];
+
+function Showcase() {
   return (
-    <section id="packages" className="py-20">
-      <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="Simple Offers"
-          title="Five packages, one clear choice"
-          text="Pick the package that matches where you are right now."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {packages.map((p) => (
-            <div
-              key={p.title}
-              className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-card transition-transform hover:-translate-y-1"
-            >
-              <span className="text-2xl">{p.tag}</span>
-              <h3 className="mt-3 text-lg font-semibold text-ink">{p.title}</h3>
-              <p className="mt-1 text-sm font-medium text-primary">{p.who}</p>
-              <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.includes}</p>
-              <Button asChild variant="outline" className="mt-6 rounded-full">
-                <a
-                  href={waLink(`Hello TERMINO-X, I am interested in the "${p.title}" package.`)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Request this package
-                </a>
-              </Button>
-            </div>
+    <section className="relative overflow-hidden bg-brand py-16">
+      <img
+        src={pitchImage}
+        alt="TERMINO-X client presenting a pitch deck to investors"
+        loading="lazy"
+        width={1600}
+        height={1008}
+        className="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div className="absolute inset-0 bg-brand opacity-75" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/3 top-0 h-64 w-64 rounded-full bg-accent/25 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto max-w-6xl px-5">
+        <Reveal>
+          <p className="mx-auto max-w-3xl text-center text-xl font-semibold leading-relaxed text-primary-foreground sm:text-2xl">
+            We prepare you for the rooms that matter — investors, banks, partners and customers.
+          </p>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 110}>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-6 text-center backdrop-blur transition-transform duration-300 hover:-translate-y-1.5">
+                <p className="text-3xl font-extrabold text-primary-foreground">{s.value}</p>
+                <p className="mt-2 text-sm text-primary-foreground/80">{s.label}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -499,30 +509,118 @@ function Packages() {
   );
 }
 
+function Packages() {
+  return (
+    <section id="packages" className="py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <Reveal>
+          <SectionHead
+            eyebrow="Simple Offers"
+            title="Five packages, one clear choice"
+            text="Pick the package that matches where you are right now."
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="group relative mt-12 overflow-hidden rounded-3xl shadow-card">
+            <img
+              src={packagesImage}
+              alt="Entrepreneurs planning their business growth together in Kigali"
+              loading="lazy"
+              width={1600}
+              height={912}
+              className="h-56 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 sm:h-72"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+            <div className="absolute bottom-0 p-6 sm:p-8">
+              <p className="text-lg font-semibold text-primary-foreground sm:text-2xl">
+                Wherever you are starting from, there is a package for you.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {packages.map((p, i) => (
+            <Reveal key={p.title} delay={i * 90} className="h-full">
+              <div className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-glow">
+                <span className="text-2xl transition-transform duration-300 group-hover:scale-125">
+                  {p.tag}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-ink">{p.title}</h3>
+                <p className="mt-1 text-sm font-medium text-primary">{p.who}</p>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.includes}</p>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="mt-6 rounded-full transition-transform hover:scale-105"
+                >
+                  <a
+                    href={waLink(`Hello TERMINO-X, I am interested in the "${p.title}" package.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Request this package
+                  </a>
+                </Button>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function Programs() {
   return (
     <section id="programs" className="bg-soft py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="TERMINO-X Programs"
-          title="Accelerators that lead to income"
-          text="Learn a skill, package it, sell it and grow it."
-        />
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {programs.map((p) => (
+        <Reveal>
+          <SectionHead
+            eyebrow="TERMINO-X Programs"
+            title="Accelerators that lead to income"
+            text="Learn a skill, package it, sell it and grow it."
+          />
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="group relative mt-12 overflow-hidden rounded-3xl shadow-card">
+            <img
+              src={classroomImage}
+              alt="Trainees learning digital and business skills in a TERMINO-X classroom"
+              loading="lazy"
+              width={1600}
+              height={912}
+              className="h-52 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 sm:h-72"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+            <div className="absolute inset-y-0 left-0 flex max-w-md items-center p-6 sm:p-10">
+              <div>
+                <p className="text-xl font-bold text-primary-foreground sm:text-3xl">
+                  Learn. Package. Sell. Earn.
+                </p>
+                <p className="mt-2 text-sm text-primary-foreground/85">
+                  Practical training with real income pathways.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {programs.map((p, idx) => (
+            <Reveal key={p.name} delay={idx * 110} className="h-full">
             <div
-              key={p.name}
-              className={`flex flex-col rounded-2xl border p-7 ${
+              className={`group flex h-full flex-col rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-2 ${
                 p.featured
                   ? "border-transparent bg-brand shadow-glow"
-                  : "border-border bg-card shadow-card"
+                  : "border-border bg-card shadow-card hover:shadow-glow"
               }`}
             >
               <div
-                className={`flex h-11 w-11 items-center justify-center rounded-xl ${
-                  p.featured ? "bg-white/15" : "bg-secondary"
+                className={`flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${
+                  p.featured ? "animate-float-slow bg-white/15" : "bg-secondary"
                 }`}
               >
+
                 <p.icon
                   className={`h-5 w-5 ${p.featured ? "text-primary-foreground" : "text-primary"}`}
                 />
@@ -579,13 +677,18 @@ function Programs() {
                 </a>
               </Button>
             </div>
+            </Reveal>
           ))}
         </div>
 
-        <h3 className="mt-16 text-center text-2xl font-bold text-ink">Sector Accelerators</h3>
+        <Reveal>
+          <h3 className="mt-16 text-center text-2xl font-bold text-ink">Sector Accelerators</h3>
+        </Reveal>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {sectorPrograms.map((s) => (
-            <div key={s.name} className="rounded-2xl border border-border bg-card p-6 shadow-card">
+          {sectorPrograms.map((s, idx) => (
+            <Reveal key={s.name} delay={idx * 110} className="h-full">
+            <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-glow">
+
               <div className="flex items-center gap-3">
                 <s.icon className="h-5 w-5 text-primary" />
                 <span className="text-sm font-bold text-primary">{s.price}</span>
@@ -609,7 +712,9 @@ function Programs() {
                 </a>
               </Button>
             </div>
+            </Reveal>
           ))}
+
         </div>
       </div>
     </section>
@@ -618,50 +723,67 @@ function Programs() {
 
 function AgentNetwork() {
   return (
-    <section id="agents" className="py-20">
-      <div className="mx-auto max-w-6xl px-5">
+    <section id="agents" className="relative overflow-hidden py-20">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto max-w-6xl px-5">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              Digital Agent Network
-            </p>
-            <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-              Earn by connecting businesses to TERMINO-X
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Become a TERMINO-X Digital Agent. Identify businesses that need a website, business
-              plan, digital marketing, AI training, sales training or a company profile, refer them
-              to TERMINO-X, and earn through an agreed commission structure.
-            </p>
-            <div className="mt-8 flex items-center gap-3">
-              <Network className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium text-ink">
-                TERMINO-X trains · Agents find opportunities · TERMINO-X delivers · Agents earn
-              </span>
-            </div>
-            <Button asChild size="lg" className="mt-8 rounded-full">
-              <a
-                href={waLink("Hello TERMINO-X, I want to become a TERMINO-X Digital Agent.")}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Become an agent
-              </a>
-            </Button>
-          </div>
-          <ol className="space-y-4">
-            {pathway.map((p, i) => (
-              <li
-                key={p.step}
-                className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-primary-foreground">
-                  {i + 1}
+          <Reveal>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                Digital Agent Network
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
+                Earn by connecting businesses to TERMINO-X
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Become a TERMINO-X Digital Agent. Identify businesses that need a website, business
+                plan, digital marketing, AI training, sales training or a company profile, refer
+                them to TERMINO-X, and earn through an agreed commission structure.
+              </p>
+              <div className="group mt-8 overflow-hidden rounded-3xl shadow-card">
+                <img
+                  src={agentsImage}
+                  alt="TERMINO-X digital agents connecting businesses across Rwanda"
+                  loading="lazy"
+                  className="h-48 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 sm:h-60"
+                />
+              </div>
+              <div className="mt-8 flex items-center gap-3">
+                <Network className="h-5 w-5 animate-float-slow text-primary" />
+                <span className="text-sm font-medium text-ink">
+                  TERMINO-X trains · Agents find opportunities · TERMINO-X delivers · Agents earn
                 </span>
-                <div>
-                  <p className="font-semibold text-ink">{p.step}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.detail}</p>
-                </div>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="mt-8 rounded-full transition-transform hover:scale-105"
+              >
+                <a
+                  href={waLink("Hello TERMINO-X, I want to become a TERMINO-X Digital Agent.")}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Become an agent
+                </a>
+              </Button>
+            </div>
+          </Reveal>
+          <ol className="space-y-4 list-none">
+            {pathway.map((p, i) => (
+              <li key={p.step}>
+                <Reveal delay={i * 120} className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-primary-foreground">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-ink">{p.step}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.detail}</p>
+                  </div>
+                </Reveal>
               </li>
             ))}
           </ol>
@@ -670,6 +792,7 @@ function AgentNetwork() {
     </section>
   );
 }
+
 
 const interests = [
   "Business plan",
@@ -720,13 +843,15 @@ function Contact() {
   return (
     <section id="contact" className="bg-soft py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="Contact"
-          title="Tell us what you need"
-          text="Fill the form and your message opens directly in WhatsApp."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Contact"
+            title="Tell us what you need"
+            text="Fill the form and your message opens directly in WhatsApp."
+          />
+        </Reveal>
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
-          <div className="space-y-4">
+          <Reveal className="space-y-4">
             <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
               <div className="flex gap-4">
                 <MapPin className="h-5 w-5 shrink-0 text-primary" />
@@ -744,7 +869,7 @@ function Contact() {
               href={waLink("Hello TERMINO-X LTD, I would like to discuss my project.")}
               target="_blank"
               rel="noreferrer"
-              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-colors hover:border-primary"
+              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow"
             >
               <div className="flex gap-4">
                 <Phone className="h-5 w-5 shrink-0 text-primary" />
@@ -756,7 +881,7 @@ function Contact() {
             </a>
             <a
               href="mailto:info@terminox.rw"
-              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-colors hover:border-primary"
+              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow"
             >
               <div className="flex gap-4">
                 <Mail className="h-5 w-5 shrink-0 text-primary" />
@@ -766,8 +891,9 @@ function Contact() {
                 </div>
               </div>
             </a>
-          </div>
+          </Reveal>
 
+          <Reveal delay={120}>
           <form
             onSubmit={submit}
             className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8"
@@ -839,6 +965,7 @@ function Contact() {
               Your details are sent as a WhatsApp message to +250 781 065 367.
             </p>
           </form>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -847,9 +974,17 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="bg-brand py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 text-center">
-        <img src={logo.url} alt="TERMINO-X LTD" className="h-10 w-auto" />
+    <footer className="relative overflow-hidden bg-brand py-12">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-16 -top-10 h-56 w-56 rounded-full bg-white/10 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 text-center">
+        <img
+          src={logo.url}
+          alt="TERMINO-X LTD"
+          className="h-10 w-auto animate-float-slow"
+        />
         <p className="max-w-xl text-sm text-primary-foreground/80">
           Business Solutions · Sales & Marketing · Skills Development · Skills-to-Income · Digital &
           AI · Sector Training
@@ -869,6 +1004,7 @@ function Index() {
       <main>
         <Hero />
         <Services />
+        <Showcase />
         <Packages />
         <Programs />
         <AgentNetwork />
