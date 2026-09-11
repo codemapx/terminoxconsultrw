@@ -843,13 +843,15 @@ function Contact() {
   return (
     <section id="contact" className="bg-soft py-20">
       <div className="mx-auto max-w-6xl px-5">
-        <SectionHead
-          eyebrow="Contact"
-          title="Tell us what you need"
-          text="Fill the form and your message opens directly in WhatsApp."
-        />
+        <Reveal>
+          <SectionHead
+            eyebrow="Contact"
+            title="Tell us what you need"
+            text="Fill the form and your message opens directly in WhatsApp."
+          />
+        </Reveal>
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
-          <div className="space-y-4">
+          <Reveal className="space-y-4">
             <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
               <div className="flex gap-4">
                 <MapPin className="h-5 w-5 shrink-0 text-primary" />
@@ -867,7 +869,7 @@ function Contact() {
               href={waLink("Hello TERMINO-X LTD, I would like to discuss my project.")}
               target="_blank"
               rel="noreferrer"
-              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-colors hover:border-primary"
+              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow"
             >
               <div className="flex gap-4">
                 <Phone className="h-5 w-5 shrink-0 text-primary" />
@@ -879,7 +881,7 @@ function Contact() {
             </a>
             <a
               href="mailto:info@terminox.rw"
-              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-colors hover:border-primary"
+              className="block rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow"
             >
               <div className="flex gap-4">
                 <Mail className="h-5 w-5 shrink-0 text-primary" />
@@ -889,8 +891,9 @@ function Contact() {
                 </div>
               </div>
             </a>
-          </div>
+          </Reveal>
 
+          <Reveal delay={120}>
           <form
             onSubmit={submit}
             className="rounded-2xl border border-border bg-card p-6 shadow-card sm:p-8"
@@ -962,6 +965,7 @@ function Contact() {
               Your details are sent as a WhatsApp message to +250 781 065 367.
             </p>
           </form>
+          </Reveal>
         </div>
       </div>
     </section>
