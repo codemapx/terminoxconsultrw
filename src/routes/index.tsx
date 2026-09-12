@@ -982,6 +982,199 @@ function Contact() {
   );
 }
 
+const whyUs = [
+  {
+    icon: ShieldCheck,
+    title: "Practical, not theory",
+    text: "Every service ends with a document, a strategy or a skill you can use immediately.",
+  },
+  {
+    icon: Rocket,
+    title: "Built for growth",
+    text: "From first idea to funding readiness, sales systems and digital tools.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Local & accessible",
+    text: "Kigali-based team, WhatsApp-first support and packages for every budget.",
+  },
+];
+
+function WhyUs() {
+  return (
+    <section className="relative overflow-hidden bg-background py-20">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-accent/15 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-2">
+        <Reveal>
+          <div className="group relative overflow-hidden rounded-3xl shadow-card">
+            <img
+              src={programsImage}
+              alt="TERMINO-X trainer coaching entrepreneurs during a practical session"
+              loading="lazy"
+              width={1600}
+              height={900}
+              className="h-64 w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 sm:h-96"
+            />
+            <div className="absolute inset-0 bg-brand opacity-25" />
+            <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-card/90 px-4 py-2 text-xs font-semibold text-ink shadow-card">
+              <Sparkles className="h-4 w-4 text-accent" /> Hands-on coaching
+            </div>
+          </div>
+        </Reveal>
+        <div>
+          <Reveal>
+            <h2 className="text-3xl font-bold text-ink sm:text-4xl">Why work with TERMINO-X</h2>
+            <p className="mt-3 text-muted-foreground">
+              We combine business consulting with skills training so you leave with income-ready
+              results, not just advice.
+            </p>
+          </Reveal>
+          <div className="mt-8 space-y-4">
+            {whyUs.map((w, i) => (
+              <Reveal key={w.title} delay={i * 120}>
+                <div className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-card transition-transform duration-300 hover:-translate-y-1">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand">
+                    <w.icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-ink">{w.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{w.text}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const testimonials = [
+  {
+    photo: client1,
+    name: "Aline M.",
+    role: "SME founder, Kigali",
+    quote:
+      "Our business plan and pitch deck were ready in days, and we finally got the investor meeting we needed.",
+  },
+  {
+    photo: client2,
+    name: "Eric N.",
+    role: "Retail shop owner",
+    quote:
+      "The sales strategy and team training doubled the customers walking into my shop every week.",
+  },
+  {
+    photo: client3,
+    name: "Divine U.",
+    role: "Skills-to-Income graduate",
+    quote:
+      "I learned a digital skill, packaged it as a service and started earning from clients in my first month.",
+  },
+];
+
+function Testimonials() {
+  return (
+    <section className="bg-soft py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <Reveal>
+          <SectionHead
+            eyebrow="Client Stories"
+            title="Results people can point at"
+            text="Entrepreneurs, SMEs and trainees who turned support into income."
+          />
+        </Reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <Reveal key={t.name} delay={i * 120} className="h-full">
+              <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-2 hover:shadow-glow">
+                <Quote className="h-7 w-7 text-accent" />
+                <blockquote className="mt-4 flex-1 text-sm text-muted-foreground">
+                  “{t.quote}”
+                </blockquote>
+                <div className="mt-5 flex items-center gap-3">
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    loading="lazy"
+                    width={800}
+                    height={800}
+                    className="h-12 w-12 rounded-full object-cover ring-2 ring-accent/40"
+                  />
+                  <figcaption>
+                    <p className="text-sm font-semibold text-ink">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                  </figcaption>
+                </div>
+                <div className="mt-4 flex gap-1">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="h-4 w-4 fill-accent text-accent" />
+                  ))}
+                </div>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CtaBand() {
+  return (
+    <section className="relative overflow-hidden">
+      <img
+        src={kigaliImage}
+        alt="Kigali city skyline at golden hour"
+        loading="lazy"
+        width={1600}
+        height={900}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-brand opacity-85" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-accent/25 blur-3xl animate-drift"
+      />
+      <div className="relative mx-auto max-w-4xl px-5 py-20 text-center">
+        <Reveal>
+          <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl">
+            <span className="text-shimmer">Let's build your next step</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-primary-foreground/85">
+            Tell us where you are today — an idea, a small business or a skill — and we will map the
+            fastest route to income and growth.
+          </p>
+        </Reveal>
+        <Reveal delay={120}>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button asChild size="lg" variant="secondary" className="rounded-full transition-transform hover:scale-105">
+              <a href="#contact">
+                Start a conversation <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full border-primary-foreground/40 bg-transparent text-primary-foreground transition-transform hover:scale-105 hover:bg-primary-foreground/10"
+            >
+              <a href={waLink("Hello TERMINO-X LTD, I want to discuss my business.")} target="_blank" rel="noreferrer">
+                <MessageCircle className="mr-2 h-4 w-4" /> Chat on WhatsApp
+              </a>
+            </Button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+
 function Footer() {
   return (
     <footer className="relative overflow-hidden bg-brand py-12">
