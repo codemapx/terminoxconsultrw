@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -245,6 +245,7 @@ const pathway = [
 
 function Nav() {
   const links = [
+    { href: "/about", label: "About", route: true },
     { href: "#services", label: "Services" },
     { href: "#packages", label: "Packages" },
     { href: "#programs", label: "Programs" },
@@ -259,13 +260,23 @@ function Nav() {
         </a>
         <nav className="hidden items-center gap-7 md:flex">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {l.label}
-            </a>
+            l.route ? (
+              <Link
+                key={l.href}
+                to="/about"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            )
           ))}
         </nav>
         <Button asChild size="sm" className="rounded-full">

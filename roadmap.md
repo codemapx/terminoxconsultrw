@@ -11,3 +11,4 @@
 - [x] Why TERMINO-X section with training photo
 - [x] Client testimonials with portraits and star ratings
 - [x] Kigali skyline call-to-action band
+- [x] About page with verified story, team functions, and milestone journey
