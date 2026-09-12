@@ -1210,7 +1210,10 @@ function Index() {
         <Showcase />
         <Packages />
         <Programs />
+        <WhyUs />
         <AgentNetwork />
+        <Testimonials />
+        <CtaBand />
         <Contact />
       </main>
       <Footer />
