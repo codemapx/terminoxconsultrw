@@ -18,6 +18,12 @@ import {
   Mail,
   Check,
   MessageCircle,
+  Quote,
+  Star,
+  Sparkles,
+  ShieldCheck,
+  Rocket,
+  HeartHandshake,
 } from "lucide-react";
 import logo from "@/assets/termino-x-logo.png.asset.json";
 import heroImage from "@/assets/hero-consulting.jpg";
