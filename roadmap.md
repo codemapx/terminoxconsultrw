@@ -8,3 +8,6 @@
 - [x] Programs classroom banner + animated cards
 - [x] Agent Network photo + animated steps
 - [x] Contact reveals and hover motion, animated footer
+- [x] Why TERMINO-X section with training photo
+- [x] Client testimonials with portraits and star ratings
+- [x] Kigali skyline call-to-action band
